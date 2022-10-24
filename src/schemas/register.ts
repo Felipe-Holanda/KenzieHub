@@ -7,7 +7,7 @@ const schemaRegister = yup.object().shape({
     confirmPassword: yup.string().oneOf([yup.ref("password"), null], "As senhas não coincidem").required("Campo obrigatório"),
     bio: yup.string().required("Preencha este campo").matches(/^.{10,}$/, "Não seja tímido, Fale um pouco sobre você! (15 Caracteres no mínimo)"),
     contact: yup.string().required("Campo obrigatório"),
-    courseModule: yup.string().required("Campo obrigatório").matches(/^(1|2|3|4|5|6)$/, "Módulo inválido"),
+    courseModule: yup.string().required("Campo obrigatório").matches(/^.{9,}$/, "Módulo inválido"),
 })
 
 export default schemaRegister;

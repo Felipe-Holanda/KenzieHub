@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../services/api";
@@ -6,33 +6,38 @@ import api from "../services/api";
 
 export const Context = createContext({});
 
-type userData = {
+export interface usrTechs { id?: string, title?: string, status?: string, created_at?: string, updated_at?: string }[];
+export interface usrWorks { id?: string, title?: string, description?: string, deploy_url?: string, created_at?: string, updated_at?: string }[];
+
+interface userData {
     id: string,
     name: string,
     email: string,
     course_module: string,
     bio: string,
     contact: string,
-    techs: Array<{ id: string, title: string, status: string, created_at: string, updated_at: string }>,
-    works: Array<{ id: string, title: string, description: string, deploy_url: string, created_at: string, updated_at: string }>,
+    techs: usrTechs,
+    works: usrWorks,
     avatar_url: string | null,
+    length: number
 }
-type lgnData = { email: string, password: string }
-type regData = { nome: string, email: string, password: string, course_module: string, bio: string, contact: string, courseModule: string }
-export type contextType = {
+interface lgnData { email?: string, password?: string }
+interface regData { nome: string, email: string, password: string, course_module: string, bio: string, contact: string, courseModule: string }
+
+export interface contextTyped {
     user?: userData,
     token?: string,
     validSession?: boolean,
     logout?: () => void,
-    handleLogin?: (data: lgnData) => void,
+    handleLogin: (data: lgnData) => Promise<void>,
     handleRegister?: (data: regData) => void,
-    useAutoLogin?: () => void,
+    useAutoLogin: () => void,
     setToken?: (token: string) => void,
     setUser?: (user: userData | string) => void,
     setValidSession?: (validSession: boolean) => void,
 }
 
-export function ContextProvider({ children }: any) {
+export function ContextProvider({ children }: { children: ReactNode }) {
 
     const navigate = useNavigate();
     const [token, setToken] = useState("");
@@ -53,6 +58,8 @@ export function ContextProvider({ children }: any) {
                         setUser(response.data)
                         setToken(token)
                         setValidSession(true)
+                    }).catch((error) => {
+                        localStorage.clear();
                     })
                 }
             }

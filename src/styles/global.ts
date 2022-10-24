@@ -1,8 +1,75 @@
 import { createGlobalStyle } from "styled-components";
 
+const colors = {
+    primary: "#FF577F",
+    primaryFocus: "#FF427F",
+    primaryNegative: "#59323F"
+}
+
+const greys = {
+    grey0: "#F8F9FA",
+    grey1: "#868E96",
+    grey2: "#343B41",
+    grey3: "#212529",
+    grey4: "#121214"
+}
+
 const GlobalStyle = createGlobalStyle`
 body{
     background-color: #121214;
+}
+
+#modal{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#modal #modal-content{
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#modal #modal-content #modal-header{
+    display: flex;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #343B41;
+    padding: .5em 1em;
+    border-radius: 1em 1em 0 0;
+}
+
+#modal #modal-content #modal-header i{
+    font-size: 1.5em;
+}
+
+#modal #modal-content #modal-body{
+    display: flex;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #212529;
+    padding: .5em 1em;
+    border-radius: 0 0 1em 1em;
+}
+
+#modal #modal-content form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 header{
@@ -22,6 +89,32 @@ header{
     flex-direction: column;
 }
 
+#techs .heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#techs .heading i{
+    color: ${greys.grey0};
+    font-size: 2em;
+}
+
+#techs li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5em 1em;
+    background-color: ${greys.grey4};
+    margin: 1em .5em;
+    border-radius: 1em;
+}
+
+#techs li:hover{
+    background-color: ${greys.grey2};
+    cursor: pointer;
+}
 
 header button{
     border: none;
