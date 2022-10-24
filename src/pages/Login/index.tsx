@@ -1,22 +1,21 @@
-import { HeaderTitle, Form, Title1, Headline, Input, ErrorText, Button, ButtonDisabed, HeadlineBold } from "../../styles/styles";
+import { HeaderTitle, Form, Title1, Headline, Input, ErrorText, Button, HeadlineBold } from "../../styles/styles";
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import schemaLogin from "../../schemas/login";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Context } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { contextTyped } from "../../context/authContext";
 
 export default function Login() {
     const { handleLogin, useAutoLogin } = useContext(Context) as contextTyped
-    const navigate = useNavigate()
     useAutoLogin()
 
     const [eye, setEye] = useState('bx bxs-show');
     const [type, setType] = useState("password");
     function togglePasswordView() {
-        type === "password" ? setType("text") : setType("password");
-        eye === "bx bxs-show" ? setEye("bx bxs-hide") : setEye("bx bxs-show");
+        if (type === "password") { setType("text") } else { setType("password"); }
+        if (eye === "bx bxs-show") { setEye("bx bxs-hide") } else { setEye("bx bxs-show"); }
     }
 
     type Idata = {
@@ -42,11 +41,11 @@ export default function Login() {
                 {errors.email && <ErrorText>{errors.email.message as string}</ErrorText>}
                 <Headline>Senha</Headline>
                 <Input type={type} placeholder='Digite sua senha' {...register('password')} />
-                <i className={eye} onClick={togglePasswordView}></i>
+                <i className={eye} onClick={() => togglePasswordView()}></i>
                 {errors.password && <ErrorText>{errors.password.message as string}</ErrorText>}
                 <Button type="submit">Entrar</Button>
                 <HeadlineBold color={'grey'} position={'center'}>Não possui uma conta?</HeadlineBold>
-                <ButtonDisabed onClick={() => { navigate('/register') }}>Cadastre-se</ButtonDisabed>
+                <Link id="linkToRegister" to="/register">Cadastre-se</Link>
             </Form>
         </div>
     );

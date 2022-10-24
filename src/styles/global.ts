@@ -1,11 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-const colors = {
-    primary: "#FF577F",
-    primaryFocus: "#FF427F",
-    primaryNegative: "#59323F"
-}
-
 const greys = {
     grey0: "#F8F9FA",
     grey1: "#868E96",
@@ -17,6 +11,21 @@ const greys = {
 const GlobalStyle = createGlobalStyle`
 body{
     background-color: #121214;
+}
+
+#linkToRegister{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: ${greys.grey1};
+}
+
+#linkToRegister:hover{
+    cursor: pointer;
+    background-color: ${greys.grey2};
 }
 
 #modal{
@@ -116,7 +125,7 @@ header{
     cursor: pointer;
 }
 
-header button{
+header #headerBtn{
     border: none;
     color: #fff;
     background-color: #212529;
@@ -127,7 +136,7 @@ header button{
     border-radius: .2em;
 }
 
-header button:hover{
+header #headerBtn:hover{
     background-color: #1e2328;
     cursor: pointer;
 }

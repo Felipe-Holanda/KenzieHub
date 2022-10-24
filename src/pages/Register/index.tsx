@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Form, HeaderTitle, Headline, Select, Title2, Input, ErrorText } from "../../styles/styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,14 +9,13 @@ import { Context } from "../../context/authContext";
 export default function Register() {
     const { handleRegister }: any = useContext(Context);
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schemaRegister), });
-    const navigate = useNavigate();
 
     return (
         <div className="principal">
             <title>Kenzie Hub | Register</title>
             <header>
                 <HeaderTitle>KenzieHub</HeaderTitle>
-                <button onClick={() => { navigate('/', { replace: true }) }}>Voltar</button>
+                <Link to="/" id="headerBtn">Voltar</Link>
             </header>
             <Form onSubmit={handleSubmit((data) => {
                 handleRegister(data);

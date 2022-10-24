@@ -1,6 +1,6 @@
 import { HeaderTitle } from "../../styles/styles";
 import { useContext } from "react";
-import { Context, contextTyped } from "../../context/authContext";
+import { Context } from "../../context/authContext";
 import { Title1, Headline } from "../../styles/styles";
 import Techs from "../../components/Techs";
 import { useEffect } from "react";
@@ -40,7 +40,7 @@ export default function Dashboard() {
             <title>Kenzie Hub | Dashboard</title>
             <header>
                 <HeaderTitle>KenzieHub</HeaderTitle>
-                <button onClick={logout}>Sair</button>
+                <button onClick={() => logout}>Sair</button>
             </header>
             <div className="container">
                 <div className="center">

@@ -6,8 +6,8 @@ import api from "../services/api";
 
 export const Context = createContext({});
 
-export interface usrTechs { id?: string, title?: string, status?: string, created_at?: string, updated_at?: string }[];
-export interface usrWorks { id?: string, title?: string, description?: string, deploy_url?: string, created_at?: string, updated_at?: string }[];
+export interface usrTechs { id?: string, title?: string, status?: string, created_at?: string, updated_at?: string };
+export interface usrWorks { id?: string, title?: string, description?: string, deploy_url?: string, created_at?: string, updated_at?: string };
 
 interface userData {
     id: string,
@@ -58,7 +58,7 @@ export function ContextProvider({ children }: { children: ReactNode }) {
                         setUser(response.data)
                         setToken(token)
                         setValidSession(true)
-                    }).catch((error) => {
+                    }).catch(() => {
                         localStorage.clear();
                     })
                 }
@@ -79,10 +79,8 @@ export function ContextProvider({ children }: { children: ReactNode }) {
             if (error.response.status === 401) {
                 toast.error('Email ou senha inválidos!');
             }
-        }).catch((error) => {
-            if (typeof (error) === "object") {
-                toast.error('Erro ao realizar login!');
-            }
+        }).catch(() => {
+            toast.error('Erro ao realizar login!');
         });
     }
 
@@ -95,31 +93,15 @@ export function ContextProvider({ children }: { children: ReactNode }) {
         toast.info('Sua sessão foi encerrada...');
     }
 
-    function identifyCourse(arg: string) {
-        if (arg === "1") {
-            return "Módulo 1 - Introdução ao Frontend";
-        } else if (arg === "2") {
-            return "Módulo 2 - Frontend Avançado";
-        } else if (arg === "3") {
-            return "Módulo 3 - React.JS e Redux";
-        } else if (arg === "4") {
-            return "Módulo 4 - Back-end com Node.JS";
-        } else if (arg === "5") {
-            return "Módulo 5 - Back-end com Python";
-        } else if (arg === "6") {
-            return "Módulo 6 - Trilha de Empregabilidade";
-        }
-    }
-
-    const handleRegister = async (data: regData) => {
-        await api.post('/users', {
+    function handleRegister(data: regData) {
+        api.post('/users', {
             email: data.email,
             password: data.password,
             name: data.nome,
             bio: data.bio,
             contact: data.contact,
-            course_module: identifyCourse(data.courseModule),
-        }).then((response) => {
+            course_module: data.courseModule,
+        }).then(() => {
             api.post('/sessions', {
                 email: data.email,
                 password: data.password,
