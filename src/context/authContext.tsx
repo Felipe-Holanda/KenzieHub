@@ -95,22 +95,6 @@ export function ContextProvider({ children }: { children: ReactNode }) {
         toast.info('Sua sessão foi encerrada...');
     }
 
-    function identifyCourse(arg: string) {
-        if (arg === "1") {
-            return "Módulo 1 - Introdução ao Frontend";
-        } else if (arg === "2") {
-            return "Módulo 2 - Frontend Avançado";
-        } else if (arg === "3") {
-            return "Módulo 3 - React.JS e Redux";
-        } else if (arg === "4") {
-            return "Módulo 4 - Back-end com Node.JS";
-        } else if (arg === "5") {
-            return "Módulo 5 - Back-end com Python";
-        } else if (arg === "6") {
-            return "Módulo 6 - Trilha de Empregabilidade";
-        }
-    }
-
     const handleRegister = async (data: regData) => {
         await api.post('/users', {
             email: data.email,
@@ -118,7 +102,7 @@ export function ContextProvider({ children }: { children: ReactNode }) {
             name: data.nome,
             bio: data.bio,
             contact: data.contact,
-            course_module: identifyCourse(data.courseModule),
+            course_module: data.courseModule,
         }).then((response) => {
             api.post('/sessions', {
                 email: data.email,

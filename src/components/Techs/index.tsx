@@ -9,7 +9,6 @@ import EditModal from "../Modal/editModal";
 export default function Techs() {
 
     const [userTechs, setUserTechs]: any = useState([]);
-    const [userWorks, setUserWorks]: any = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [techId, setTechId] = useState({
@@ -32,7 +31,6 @@ export default function Techs() {
             }
         }).then((response) => {
             setUserTechs(response.data.techs)
-            setUserWorks(response.data.works)
         })
     }, [])
 
@@ -55,7 +53,6 @@ export default function Techs() {
                 }
             }).then((response) => {
                 setUserTechs(response.data.techs)
-                setUserWorks(response.data.works)
             })
         }).catch((error) => {
             toast.error('Erro ao editar tecnologia!')
@@ -76,7 +73,6 @@ export default function Techs() {
                 }
             }).then((response) => {
                 setUserTechs(response.data.techs)
-                setUserWorks(response.data.works)
             })
         }).catch((error) => {
             toast.error('Erro ao deletar tecnologia!')
@@ -97,15 +93,6 @@ export default function Techs() {
             return <HeadlineBold color="white" position="center">Você ainda não possui tecnologias cadastradas</HeadlineBold>
         }
     }
-    function mapWorks() {
-        if (userWorks.length > 0) {
-            userWorks.map((element: any) => {
-                console.log(element)
-            })
-        } else {
-            return <HeadlineBold position="center">Você ainda não possui trabalhos cadastrados</HeadlineBold>
-        }
-    }
 
     function addNewTech(data: { title: string, status: string }) {
         api.post('/users/techs', data, {
@@ -121,7 +108,6 @@ export default function Techs() {
                 }
             }).then((response) => {
                 setUserTechs(response.data.techs)
-                setUserWorks(response.data.works)
             })
         }).catch((error) => {
             if (error.response.status === 401) {
