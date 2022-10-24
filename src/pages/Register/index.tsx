@@ -43,18 +43,18 @@ export default function Register() {
                 {errors.contact && <ErrorText>{errors.contact.message as string}</ErrorText>}
                 <Headline>Módulo</Headline>
                 <Select {...register('courseModule')}>
-                    <option value="0">Selecione o módulo</option>
+                    <option value="Selecione"></option>
                     <optgroup label="Front-End">
-                        <option value="1">Módulo 1 - (Introdução a Front-End)</option>
-                        <option value="2">Módulo 2 - (Front-End Avançado)</option>
-                        <option value="3">Módulo 3 - (React)</option>
+                        <option value="Módulo 1 - (Introdução a Front-End)">Módulo 1 - (Introdução a Front-End)</option>
+                        <option value="Módulo 2 - (Front-End Avançado)">Módulo 2 - (Front-End Avançado)</option>
+                        <option value="Módulo 3 - (React)">Módulo 3 - (React)</option>
                     </optgroup>
                     <optgroup label="Back-End">
-                        <option value="4">Módulo 4 - (Back-End com Node.JS)</option>
-                        <option value="5">Módulo 5 - (Back-End com Python)</option>
+                        <option value="Módulo 4 - (Back-End com Node.JS)">Módulo 4 - (Back-End com Node.JS)</option>
+                        <option value="Módulo 5 - (Back-End com Python)">Módulo 5 - (Back-End com Python)</option>
                     </optgroup>
                     <optgroup label="Empregabilidade">
-                        <option value="6">Módulo 6 - (Soft Skills e Empregabilidade)</option>
+                        <option value="Módulo 6 - (Soft Skills e Empregabilidade)">Módulo 6 - (Soft Skills e Empregabilidade)</option>
                     </optgroup>
                 </Select>
                 {errors.courseModule && <ErrorText>{errors.courseModule.message as string}</ErrorText>}
