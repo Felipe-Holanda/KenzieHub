@@ -2,7 +2,7 @@ import { Button, ButtonDisabed, Headline, Input, Select, Title3 } from "../../st
 import { useState } from "react";
 
 interface propsFunctions {
-    handleEditModal: (data: string | {}) => void,
+    handleEditModal: (data: string | {}) => void | string,
     techId: {
         id: string,
         title: string,

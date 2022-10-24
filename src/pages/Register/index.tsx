@@ -6,8 +6,12 @@ import schemaRegister from "../../schemas/register";
 import { useContext } from "react";
 import { Context } from "../../context/authContext";
 
+interface propsFunctions {
+    handleRegister: (data: string | {}) => void | string,
+}
+
 export default function Register() {
-    const { handleRegister }: any = useContext(Context);
+    const { handleRegister } = useContext(Context) as propsFunctions;
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schemaRegister), });
 
     return (

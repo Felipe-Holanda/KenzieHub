@@ -8,7 +8,7 @@ import EditModal from "../Modal/editModal";
 
 export default function Techs() {
 
-    const [userTechs, setUserTechs]: any = useState([]);
+    const [userTechs, setUserTechs] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [techId, setTechId] = useState({
@@ -46,7 +46,7 @@ export default function Techs() {
             }
         }).then((response) => {
             toast.success('Tecnologia editada com sucesso!')
-            handleEditModal("")
+            handleEditModal({})
             api.get('/profile', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('@TOKEN')}`
@@ -59,14 +59,14 @@ export default function Techs() {
         })
     }
 
-    function deleteTech(value: any) {
+    function deleteTech(value: string) {
         api.delete(`/users/techs/${value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('@TOKEN')}`
             }
         }).then((response) => {
             toast.success('Tecnologia deletada com sucesso!')
-            handleEditModal("")
+            handleEditModal({})
             api.get('/profile', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('@TOKEN')}`
@@ -79,9 +79,17 @@ export default function Techs() {
         })
     }
 
+    interface Itech {
+        id?: string,
+        title?: string,
+        status?: string,
+        created_at?: string,
+        updated_at?: string
+    }
+
     function mapTechs() {
         if (userTechs.length > 0) {
-            return userTechs.map((tech: any) => {
+            return userTechs.map((tech: Itech) => {
                 return (
                     <li key={tech.title} onClick={() => { handleEditModal(tech) }}>
                         <Title3>{tech.title}</Title3>

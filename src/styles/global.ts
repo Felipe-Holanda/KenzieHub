@@ -125,7 +125,7 @@ header{
     cursor: pointer;
 }
 
-header #headerBtn{
+header #headerBtn, header button{
     border: none;
     color: #fff;
     background-color: #212529;
@@ -136,7 +136,7 @@ header #headerBtn{
     border-radius: .2em;
 }
 
-header #headerBtn:hover{
+header #headerBtn:hover, header button:hover{
     background-color: #1e2328;
     cursor: pointer;
 }

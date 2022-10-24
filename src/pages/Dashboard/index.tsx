@@ -23,11 +23,11 @@ export default function Dashboard() {
             avatar_url: string | null,
             length: number
         },
-        logout?: () => void,
+        logout: () => void,
         validSession?: boolean
     }
 
-    const { user, logout, validSession }: imported = useContext(Context);
+    const { user, logout, validSession } = useContext(Context) as imported;
 
     useEffect(() => {
         if (!validSession) {
@@ -40,7 +40,7 @@ export default function Dashboard() {
             <title>Kenzie Hub | Dashboard</title>
             <header>
                 <HeaderTitle>KenzieHub</HeaderTitle>
-                <button onClick={() => logout}>Sair</button>
+                <button onClick={logout}>Sair</button>
             </header>
             <div className="container">
                 <div className="center">

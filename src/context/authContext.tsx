@@ -28,7 +28,7 @@ export interface contextTyped {
     user?: userData,
     token?: string,
     validSession?: boolean,
-    logout?: () => void,
+    logout: () => void,
     handleLogin: (data: lgnData) => Promise<void>,
     handleRegister?: (data: regData) => void,
     useAutoLogin: () => void,
