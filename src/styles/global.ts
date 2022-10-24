@@ -1,11 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-const colors = {
-    primary: "#FF577F",
-    primaryFocus: "#FF427F",
-    primaryNegative: "#59323F"
-}
-
 const greys = {
     grey0: "#F8F9FA",
     grey1: "#868E96",
@@ -17,6 +11,10 @@ const greys = {
 const GlobalStyle = createGlobalStyle`
 body{
     background-color: #121214;
+}
+
+.testelemented{
+    color: ${greys.grey1};
 }
 
 #modal{

@@ -1,6 +1,6 @@
 import { HeaderTitle } from "../../styles/styles";
 import { useContext } from "react";
-import { Context, contextTyped } from "../../context/authContext";
+import { Context } from "../../context/authContext";
 import { Title1, Headline } from "../../styles/styles";
 import Techs from "../../components/Techs";
 import { useEffect } from "react";
